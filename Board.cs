@@ -1,21 +1,22 @@
 // Responsible for rules and states of the game this includes:
 // initialise/ reset the board (reset())
 // mark the board? (PlaceMark())
-class board
+class Board
 {
     private char[,] grid = new char[3, 3];
 
-    public board()
+    public Board()
     {
-        reset();
+        Reset();
     }
 
-    public void reset()
+    public void Reset()
     {
         for (int r = 0; r < 3; r++)
         {
-            for(int c = 0; c < 3: c++){
-                grid[r, c] = " ";
+            for (int c = 0; c < 3; c++)
+            {
+                grid[r, c] = ' ';
             }
         }
     }
@@ -37,12 +38,21 @@ class board
     public void Display()
     {
         Console.WriteLine();
+
+        // Column numbers
+        Console.WriteLine("   1   2   3");
+
         for (int r = 0; r < 3; r++)
         {
+            // Row numbers
+            Console.Write($"{r + 1} ");
+
+            // Display the row with separators
             Console.WriteLine(" {0} | {1} | {2} ", grid[r, 0], grid[r, 1], grid[r, 2]);
 
+            // Print the separator line between rows, except after the last row
             if (r < 2)
-                Console.WriteLine("---+---+---");
+                Console.WriteLine("  ---+---+---");
         }
         Console.WriteLine();
     }
@@ -57,4 +67,8 @@ class board
         return true;
     }
 
+    public char GetCell(int row, int col)
+    {
+        return grid[row, col];
+    }
 }

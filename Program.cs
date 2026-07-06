@@ -4,48 +4,48 @@ class Program
 {
     static void Main(string[] args)
     {
-        // Create a 3x3 board
-        char[,] board = new char[3, 3];
+        Board board = new Board();
+        Game game = new Game(board);
 
-        // Fill the board with spaces
-        for (int row = 0; row < 3; row++)
+        char currentPlayer = 'X';
+
+        while (true)
         {
-            for (int col = 0; col < 3; col++)
+            board.Display();
+
+            Console.WriteLine($"Player {currentPlayer}, enter row 1-3:");
+            int row = int.Parse(Console.ReadLine()) - 1;
+
+            Console.WriteLine($"Player {currentPlayer}, enter column 1-3:");
+            int col = int.Parse(Console.ReadLine()) - 1;
+
+            if (row < 0 || row > 2 || col < 0 || col > 2)
             {
-                board[row, col] = ' ';
-            }
-        }
-
-        // Display the board
-        PrintBoard(board);
-    }
-
-    static void PrintBoard(char[,] board)
-    {
-        //prints the collumn numbers
-        Console.WriteLine("   1   2   3");
-
-        for (int row = 0; row < 3; row++)
-        {
-            //prints the row numbers
-            Console.Write($"{row + 1} ");
-
-            for (int col = 0; col < 3; col++)
-            {
-                //Print the value stored in the current board cell,
-                //with a space before and after it,
-                //without moving to the next line
-                
-                Console.Write($" {board[row, col]} ");
-
-                if (col < 2)
-                    Console.Write("|");
+                Console.WriteLine("Invalid position. Try again.");
+                continue;
             }
 
-            Console.WriteLine();
+            if (!board.PlaceMove(row, col, currentPlayer))
+            {
+                Console.WriteLine("That cell is already taken. Try again.");
+                continue;
+            }
 
-            if (row < 2)
-                Console.WriteLine("  ---+---+---");
+            if (game.CheckWin(currentPlayer))
+            {
+                board.Display();
+                Console.WriteLine($"Player {currentPlayer} wins!");
+                break;
+            }
+
+            if (board.IsFull())
+            {
+                board.Display();
+                Console.WriteLine("It's a draw!");
+                break;
+            }
+
+            currentPlayer = currentPlayer == 'X' ? 'O' : 'X';
         }
     }
 }
