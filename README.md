@@ -1,9 +1,6 @@
 # Tic-Tac-Toe
-A Tic-Tac-Toe game developed in C# with Visual Studio. This project demonstrates core programming concepts including game loops, player input validation, win detection, and clean, modular code.
 
-# Tic-Tac-Toe (C#)
-
-A console-based Tic-Tac-Toe game built in C# using Visual Studio.
+A console-based Tic-Tac-Toe game developed in C# using .NET and Visual Studio. This project demonstrates core programming concepts including object-oriented programming, game loops, player input validation, win and draw detection, and modular code design.
 
 ## Features
 
@@ -12,6 +9,7 @@ A console-based Tic-Tac-Toe game built in C# using Visual Studio.
 - Win detection
 - Draw detection
 - Play again option
+- Row and column board coordinates
 - Clean object-oriented design
 
 ## Technologies
@@ -22,9 +20,10 @@ A console-based Tic-Tac-Toe game built in C# using Visual Studio.
 
 ## Concepts Demonstrated
 
-- Object-Oriented Programming
-- Arrays
+- Object-Oriented Programming (OOP)
+- 2D Arrays
 - Loops
 - Methods
 - Input Validation
+- Conditional Statements
 - Modular Design
