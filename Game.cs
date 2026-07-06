@@ -36,4 +36,12 @@ class Game
 
         return false;
     }
+
+    public bool CheckDraw()
+{
+    return board.IsFull() &&
+           !CheckWin('X') &&
+           !CheckWin('O');
+}
+
 }
